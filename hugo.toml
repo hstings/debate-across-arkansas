@@ -3,7 +3,7 @@
 # The baseURL includes the repository subpath so links work on GitHub project Pages.
 
 baseURL = 'https://hstings.github.io/debate-across-arkansas/'
-languageCode = 'en-us'
+locale = 'en-us'
 defaultContentLanguage = 'en'
 title = 'Debate Across Arkansas'
 capitalizeListTitles = false

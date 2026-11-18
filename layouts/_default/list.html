@@ -16,7 +16,7 @@
         <a class="entry" href="{{ .RelPermalink }}">
           {{- if .Params.example }}<span class="flag-label">Example</span>{{ end }}
           <h2>{{ .Title }}</h2>
-          {{- with .Params.summary }}<p>{{ . }}</p>{{ end }}
+          {{- with .RawSummary }}<p>{{ . }}</p>{{ end }}
         </a>
       </li>
       {{- end }}

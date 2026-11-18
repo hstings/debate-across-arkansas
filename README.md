@@ -6,7 +6,7 @@ The pages ship with placeholder copy. Each placeholder page is marked on the pag
 
 ## Run locally
 
-Install [Hugo](https://gohugo.io/installation/). This site was built with Hugo 0.152.2. Dart Sass is not required.
+Install [Hugo](https://gohugo.io/installation/). This site was built with Hugo 0.170.1. Dart Sass is not required.
 
 From the repository root:
 
