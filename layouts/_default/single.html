@@ -1,0 +1,16 @@
+{{ define "main" }}
+<article class="page">
+  <div class="wrap">
+    {{- if and (eq .Section "events") .Parent }}
+    <p class="back"><a href="{{ .Parent.RelPermalink }}">All events</a></p>
+    {{- end }}
+    <header class="page-head">
+      {{ partial "flags.html" . }}
+      <h1>{{ .Title }}</h1>
+    </header>
+    <div class="prose">
+      {{ .Content }}
+    </div>
+  </div>
+</article>
+{{ end }}

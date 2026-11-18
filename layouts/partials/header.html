@@ -1,0 +1,49 @@
+<header class="site-header">
+  <div class="wrap header-bar">
+    <a class="brand" href="{{ .Site.Home.RelPermalink }}">
+      <span class="mark" aria-hidden="true">{{ partial "mark.html" . }}</span>
+      <span class="wordmark">Debate Across<br>Arkansas</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Primary">
+      <ul>
+        {{- range site.Menus.main }}
+        <li>
+          <a href="{{ .URL }}"{{ if or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }} aria-current="page"{{ end }}>{{ .Name }}</a>
+        </li>
+        {{- end }}
+      </ul>
+    </nav>
+  </div>
+</header>
+<script>
+(function () {
+  var button = document.querySelector(".nav-toggle");
+  var nav = document.getElementById("site-nav");
+  if (!button || !nav) return;
+
+  function setOpen(open) {
+    nav.classList.toggle("is-open", open);
+    button.setAttribute("aria-expanded", open ? "true" : "false");
+    button.textContent = open ? "Close" : "Menu";
+  }
+
+  button.addEventListener("click", function () {
+    setOpen(!nav.classList.contains("is-open"));
+  });
+
+  document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+      var wasOpen = nav.classList.contains("is-open");
+      setOpen(false);
+      if (wasOpen) button.focus();
+    }
+  });
+
+  document.addEventListener("click", function (event) {
+    if (!nav.classList.contains("is-open")) return;
+    if (button.contains(event.target) || nav.contains(event.target)) return;
+    setOpen(false);
+  });
+})();
+</script>

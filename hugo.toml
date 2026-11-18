@@ -1,0 +1,44 @@
+# Debate Across Arkansas
+# Live site: https://hstings.github.io/debate-across-arkansas/
+# The baseURL includes the repository subpath so links work on GitHub project Pages.
+
+baseURL = 'https://hstings.github.io/debate-across-arkansas/'
+languageCode = 'en-us'
+defaultContentLanguage = 'en'
+title = 'Debate Across Arkansas'
+capitalizeListTitles = false
+enableRobotsTXT = true
+disableKinds = ['taxonomy', 'term', 'RSS']
+
+[params]
+  description = 'A nonprofit supporting speech and debate in Arkansas. This first version of the site uses placeholder copy.'
+
+[[menus.main]]
+  name = 'About'
+  pageRef = '/about'
+  weight = 10
+
+[[menus.main]]
+  name = 'Programs'
+  pageRef = '/programs'
+  weight = 20
+
+[[menus.main]]
+  name = 'Events'
+  pageRef = '/events'
+  weight = 30
+
+[[menus.main]]
+  name = 'Get involved'
+  pageRef = '/get-involved'
+  weight = 40
+
+[[menus.main]]
+  name = 'Donate'
+  pageRef = '/donate'
+  weight = 50
+
+[[menus.main]]
+  name = 'Contact'
+  pageRef = '/contact'
+  weight = 60
