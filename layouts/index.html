@@ -1,6 +1,6 @@
 {{ define "main" }}
 {{- $page := . -}}
-{{- $home := site.Data.home -}}
+{{- $home := hugo.Data.home -}}
 {{- $photo := resources.Get "images/hills-near-lake.jpg" -}}
 {{- $webp := $photo.Resize "1920x webp q75" -}}
 {{- $jpg := $photo.Resize "1920x jpg q75" -}}
