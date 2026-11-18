@@ -1,23 +1,31 @@
 {{ define "main" }}
 {{- $page := . -}}
 {{- $home := site.Data.home -}}
+{{- $photo := resources.Get "images/hills-near-lake.jpg" -}}
+{{- $webp := $photo.Resize "1920x webp q75" -}}
+{{- $jpg := $photo.Resize "1920x jpg q75" -}}
+{{- $webpSm := $photo.Resize "960x webp q72" -}}
+{{- $jpgSm := $photo.Resize "960x jpg q72" -}}
 <section class="hero-wrap">
-  <div class="wrap">
-    {{ partial "flags.html" . }}
-    <div class="hero">
-      <div class="hero-copy">
-        <h1>{{ $home.hero_title }}</h1>
-        <p class="lede">{{ $home.hero_text }}</p>
-        <div class="actions">
-          {{- range $home.ctas }}
-          <a class="{{ if eq .style "primary" }}button button-primary{{ else if eq .style "text" }}text-link{{ else }}button button-secondary{{ end }}" href="{{ relref $page .url }}">{{ .label }}</a>
-          {{- end }}
-        </div>
-      </div>
-      <div class="hero-mark" aria-hidden="true">
-        <span class="mark">{{ partial "mark.html" $page }}</span>
+  <div class="hero-media">
+    <picture>
+      <source type="image/webp" srcset="{{ $webpSm.RelPermalink }} 960w, {{ $webp.RelPermalink }} 1920w" sizes="100vw">
+      <img src="{{ $jpg.RelPermalink }}" srcset="{{ $jpgSm.RelPermalink }} 960w, {{ $jpg.RelPermalink }} 1920w" sizes="100vw" width="{{ $jpg.Width }}" height="{{ $jpg.Height }}" alt="Forested hills under a cloudy sky, with a lake in the distance on the right" fetchpriority="high" decoding="async">
+    </picture>
+  </div>
+  <div class="hero-scrim" aria-hidden="true"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      {{ partial "flags.html" . }}
+      <h1>{{ $home.hero_title }}</h1>
+      <p class="lede">{{ $home.hero_text }}</p>
+      <div class="actions">
+        {{- range $home.ctas }}
+        <a class="button {{ if eq .style "primary" }}button-primary{{ else }}button-secondary{{ end }}" href="{{ relref $page .url }}">{{ .label }}</a>
+        {{- end }}
       </div>
     </div>
+    <p class="photo-credit">Photo by <a href="https://unsplash.com/@jcotten?utm_source=debate_across_arkansas&amp;utm_medium=referral">Joshua J. Cotten</a> on <a href="https://unsplash.com/photos/green-hills-near-lake-hET8qSGlQg0?utm_source=debate_across_arkansas&amp;utm_medium=referral">Unsplash</a></p>
   </div>
 </section>
 
@@ -50,7 +58,7 @@
       <h2>{{ $home.band_title }}</h2>
       <p>{{ $home.band_text }}</p>
     </div>
-    <a class="button button-on-brand" href="{{ relref $page $home.band_url }}">{{ $home.band_label }}</a>
+    <a class="button button-primary" href="{{ relref $page $home.band_url }}">{{ $home.band_label }}</a>
   </div>
 </section>
 

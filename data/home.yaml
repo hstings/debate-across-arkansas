@@ -7,9 +7,6 @@ ctas:
   - label: See events
     url: /events
     style: secondary
-  - label: Donate
-    url: /donate
-    style: text
 paths_title: "On this site"
 pathways:
   - title: Programs

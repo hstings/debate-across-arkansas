@@ -37,6 +37,10 @@ Update those when you change `--brand`.
 
 The state mark is an SVG outline of Arkansas in `assets/mark.svg`, from Natural Earth public-domain boundaries. The header uses it in the brand color. The same shape is the favicon.
 
+The home page background is a photograph of forested hills and a lake, saved at `assets/images/hills-near-lake.jpg`. Hugo makes the WebP and JPEG sizes at build time. The credit on the page is part of the layout: photo by [Joshua J. Cotten](https://unsplash.com/@jcotten) on [Unsplash](https://unsplash.com/photos/green-hills-near-lake-hET8qSGlQg0).
+
+Coding agents can use the design notes in `.cursor/skills/unslop/`. That skill is by Damir Sokolovsky and is licensed CC BY 4.0. The license file is next to `SKILL.md`.
+
 Inter and Newsreader are included under the SIL Open Font License. The license texts are `static/fonts/OFL-Inter.txt` and `static/fonts/OFL-Newsreader.txt`.
 
 ## Add a page
