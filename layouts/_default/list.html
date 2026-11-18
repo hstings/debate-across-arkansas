@@ -1,0 +1,29 @@
+{{ define "main" }}
+<article class="page">
+  <div class="wrap">
+    <header class="page-head">
+      {{ partial "flags.html" . }}
+      <h1>{{ .Title }}</h1>
+    </header>
+    <div class="prose">
+      {{ .Content }}
+    </div>
+    {{- $pages := .RegularPages.ByWeight }}
+    {{- if $pages }}
+    <ul class="entries">
+      {{- range $pages }}
+      <li>
+        <a class="entry" href="{{ .RelPermalink }}">
+          {{- if .Params.example }}<span class="flag-label">Example</span>{{ end }}
+          <h2>{{ .Title }}</h2>
+          {{- with .Params.summary }}<p>{{ . }}</p>{{ end }}
+        </a>
+      </li>
+      {{- end }}
+    </ul>
+    {{- else }}
+    <p class="empty">No events are listed yet.</p>
+    {{- end }}
+  </div>
+</article>
+{{ end }}

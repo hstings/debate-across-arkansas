@@ -1,0 +1,22 @@
+{{- $title := site.Title -}}
+{{- if eq .Kind "404" -}}
+  {{- $title = printf "Page not found · %s" site.Title -}}
+{{- else if not .IsHome -}}
+  {{- $title = printf "%s · %s" .Title site.Title -}}
+{{- end -}}
+{{- $desc := .Description | default site.Params.description -}}
+<title>{{ $title }}</title>
+<meta name="description" content="{{ $desc }}">
+{{- if or (eq .Kind "404") .Params.placeholder .Params.example }}
+<meta name="robots" content="noindex">
+{{- end }}
+<link rel="canonical" href="{{ .Permalink }}">
+<meta property="og:title" content="{{ $title }}">
+<meta property="og:description" content="{{ $desc }}">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta name="theme-color" content="#79BFE0">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
+{{- $css := resources.Get "css/main.css" | resources.ExecuteAsTemplate "css/main.css" . | minify | fingerprint -}}
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" crossorigin="anonymous">

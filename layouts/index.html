@@ -1,0 +1,71 @@
+{{ define "main" }}
+{{- $page := . -}}
+{{- $home := site.Data.home -}}
+<section class="hero-wrap">
+  <div class="wrap">
+    {{ partial "flags.html" . }}
+    <div class="hero">
+      <div class="hero-copy">
+        <h1>{{ $home.hero_title }}</h1>
+        <p class="lede">{{ $home.hero_text }}</p>
+        <div class="actions">
+          {{- range $home.ctas }}
+          <a class="{{ if eq .style "primary" }}button button-primary{{ else if eq .style "text" }}text-link{{ else }}button button-secondary{{ end }}" href="{{ relref $page .url }}">{{ .label }}</a>
+          {{- end }}
+        </div>
+      </div>
+      <div class="hero-mark" aria-hidden="true">
+        <span class="mark">{{ partial "mark.html" $page }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section mission">
+  <div class="wrap mission-grid">
+    <h2>Mission</h2>
+    <div class="prose">
+      {{ .Content }}
+    </div>
+  </div>
+</section>
+
+<section class="section paths-wrap">
+  <div class="wrap">
+    <h2>{{ $home.paths_title }}</h2>
+    <div class="paths">
+      {{- range $home.pathways }}
+      <article class="path">
+        <h3><a href="{{ relref $page .url }}">{{ .title }}</a></h3>
+        <p>{{ .text }}</p>
+      </article>
+      {{- end }}
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap band-inner">
+    <div>
+      <h2>{{ $home.band_title }}</h2>
+      <p>{{ $home.band_text }}</p>
+    </div>
+    <a class="button button-on-brand" href="{{ relref $page $home.band_url }}">{{ $home.band_label }}</a>
+  </div>
+</section>
+
+<section class="section closers-wrap">
+  <div class="wrap">
+    <h2>{{ $home.closers_title }}</h2>
+    <div class="closers">
+      {{- range $home.closers }}
+      <article class="closer">
+        <h3>{{ .title }}</h3>
+        <p>{{ .text }}</p>
+        <a href="{{ relref $page .url }}">{{ .label }}</a>
+      </article>
+      {{- end }}
+    </div>
+  </div>
+</section>
+{{ end }}
