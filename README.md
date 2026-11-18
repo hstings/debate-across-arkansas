@@ -82,8 +82,8 @@ Pushes to `main` run [`.github/workflows/hugo.yml`](.github/workflows/hugo.yml).
 
 `https://hstings.github.io/debate-across-arkansas/`
 
-Pull requests run the same build and do not deploy.
+Pull requests run the same Hugo build and do not deploy. That build does not need GitHub Pages to be turned on.
 
-One-time GitHub Pages setting: in the repository, open **Settings > Pages > Build and deployment > Source** and choose **GitHub Actions**.
+One-time GitHub Pages setting, required before the first deploy: in the repository, open **Settings > Pages > Build and deployment > Source** and choose **GitHub Actions**. Turn this on before merging, or re-run the failed `main` workflow after you turn it on. Until a Pages site exists, the deploy steps cannot look it up.
 
 After the first successful run on `main`, the site is published at the URL above. `baseURL` in `hugo.toml` and `--baseURL` in the workflow both use that address, including the `/debate-across-arkansas/` subpath, so links, styles, fonts, and the favicon resolve on the project site.
